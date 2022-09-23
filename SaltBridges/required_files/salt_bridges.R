@@ -19,8 +19,6 @@ straight_col           <- "red"  # Color of straight line
 
 # Save distance of salt bridge throughout trajectory in CSV
 # Plot distance vs frame
-# Data saved in directory called validSB_files
-# Plots saved in directory called Plots
 #####################
 
 save_saltBridge_data <- function(dist_list, x, percent) {
@@ -32,8 +30,8 @@ save_saltBridge_data <- function(dist_list, x, percent) {
     new_row <- data.frame(Index = c(i), Distance = (dist_list[i]))
     df <- rbind(df, new_row)
   }
-  dir.create(file.path("../", "validSB_files"), showWarnings = FALSE)
-  file_name <- paste("../validSB_files/", sb_name, ".csv",
+  dir.create(file.path("./", "validSB_files"), showWarnings = FALSE)
+  file_name <- paste("./validSB_files/", sb_name, ".csv",
                      sep = "", collapse = NULL)
   write.csv(df, file_name)
   # Plot data
@@ -44,8 +42,8 @@ save_saltBridge_data <- function(dist_list, x, percent) {
        col = transparent(graph_col), cex.lab = 1.4, lwd = 1.5)
   lines(smoothingSpline, type="l", col = graph_col, lwd = 1.5)
   abline(h = 3.2, col = straight_col, lwd = 2)
-  dir.create(file.path("../", "Plots"), showWarnings = FALSE)
-  file_name <- paste("../Plots/", sb_name, ".jpg",
+  dir.create(file.path("./", "Plots"), showWarnings = FALSE)
+  file_name <- paste("./Plots/", sb_name, ".jpg",
                      sep = "", collapse = NULL)
   dev.copy(png, file_name)
   dev.off()
@@ -88,7 +86,7 @@ header <- paste("Salt bridges with at least ",
 text <- paste(return_list, collapse = "\n")
 text <- paste(header, text, sep = "\n")
 
-fileConn<-file("../saltBridges.txt")
+fileConn<-file("./saltBridges.txt")
 writeLines(text, fileConn)
 close(fileConn)
 
