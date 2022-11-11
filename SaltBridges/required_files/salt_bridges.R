@@ -38,7 +38,7 @@ save_saltBridge_data <- function(dist_list, x, percent) {
   smoothingSpline = smooth.spline(df$Index, df$Distance, spar=smoothing_spur)
   plot(df, type="l", ylim = c(2, 5),
        main = paste(sb_name, percent), 
-       ylab = "Frame", xlab = "Distance (Å)",
+       ylab = "Distance (Å)", xlab = "Frame",
        col = transparent(graph_col), cex.lab = 1.4, lwd = 1.5)
   lines(smoothingSpline, type="l", col = graph_col, lwd = 1.5)
   abline(h = 3.2, col = straight_col, lwd = 2)
